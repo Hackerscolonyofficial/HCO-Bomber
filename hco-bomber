@@ -109,19 +109,20 @@ fi
 
 function LAST_STG() {
     echo
+    rm -rf hcoapi hcoapi.t
+    cp .apis hcoapi 
     read -p $'\e[32m[\e[0m+\e[32m] \e[0mEnter Amount of spams max.500 => ' rangein 
-    if [[ ! -z $rangein ]]; then
+    if [[ ! -z $rangein || $range = ]]; then
         banner
         msg "Bombing started on Phno.+${combnum}...\n"
-        rm -rf hcoapi
-        cp .apis hcoapi
         while read a; do
             echo ${a//€hcobomb/$phno}
             echo ${a//+91/+$cncode}
         done < hcoapi > hcoapi.t
         mv hcoapi{.t,}
-        for i in {1..38}
+        for ((; ;))
         do bash hcoapi
+                break 20;
     done
     else
         echo
