@@ -5,7 +5,7 @@ HCO-Bomber is an api based tool that spams bulk of sms -- the Tool is under main
 ```
 $ apt update && apt upgrade -y
 
-$ pkg i git -y
+$ pkg install git -y
 
 $ git clone https://github.com/Hackerscolonyofficial/HCO-Bomber; 
 
