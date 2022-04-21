@@ -1,0 +1,189 @@
+#!/bin/bash
+###################################
+#Author  : Azhar (Team - HCO)     #
+#Project : Smsbomber              #
+#Type    : Spamming Tool          #
+#lang    : shell script           #
+#Owner   : Azhar YT, Miss Praveen #
+###################################
+#################################
+#          C O L O U R S        #
+#################################
+orange='\033[0;33m'             #
+white="\033[1;37m"              #
+grey="\033[0;37m"               #
+orange="\033[33m"               #
+purple="\033[1;35m"             #
+red="\033[1;31m"                #
+green="\033[1;32m"              #
+yellow="\033[1;33m"             #
+purple="\033[0;35m"             #
+cyan1="\033[0;36m"              #
+cyan11="\033[1;36m"             #
+sta="\e[5m"                     #
+cafe="\033[0;33m"               #
+fiuscha="\033[0;35m"            #
+sto="\e[25m"                    #
+blue="\033[1;34m"               #
+l_red="\033[1;37;41m"           #
+nc="\033[0m"                    #  
+dsh="&#8212"                    #
+pink="\e[95m"                   #
+#################################
+# Script Starting
+msg() {
+	printf "${green}[${nc}+${green}] ${white}${1}\n${nc}"
+}
+errormsg() {
+        printf "${red}[!] ${white}${1}\n${nc}"
+}
+askmsg(){
+	printf "${yellow}[?] ${white}${1}\n${nc}"
+}
+banner() {
+    clear
+    printf "${orange}  
+▄   █ ▄█▄    ████▄ 
+█   █ █▀ ▀▄  █   █ 
+██▀▀█ █   ▀  █   █ 
+${white}█   █ █▄  ▄▀ ▀████ `date`
+    █  ▀███▀        
+   ▀        ███   ████▄ █▀▄▀█ ███   ▄███▄   █▄▄▄▄ 
+       ${green}     █  █  █   █ █ █ █ █  █  █▀   ▀  █  ▄▀ 
+            █ ▀ ▄ █   █ █ ▄ █ █ ▀ ▄ ██▄▄    █▀▀▌  
+            █  ▄▀ ▀████ █   █ █  ▄▀ █▄   ▄▀ █  █  
+            ███            █  ███   ▀███▀     █   
+                          ▀                  ▀ \n"
+                          
+printf "                                                ${yellow}v1.0 
+                                                𝕓𝕪 𝕥𝕖𝕒𝕞 - ℍ.ℂ.𝕆\n\n"
+#printf "${red}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n
+#            ${nc}Today is `date`\n
+echo -e "${red}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
+}
+firstbanner() {
+    clear
+	printf "${orange}  
+▄   █ ▄█▄    ████▄ 
+█   █ █▀ ▀▄  █   █ 
+██▀▀█ █   ▀  █   █ 
+${white}█   █ █▄  ▄▀ ▀████ `date`
+    █  ▀███▀        
+   ▀        ███   ████▄ █▀▄▀█ ███   ▄███▄   █▄▄▄▄ 
+       ${green}     █  █  █   █ █ █ █ █  █  █▀   ▀  █  ▄▀ 
+            █ ▀ ▄ █   █ █ ▄ █ █ ▀ ▄ ██▄▄    █▀▀▌  
+            █  ▄▀ ▀████ █   █ █  ▄▀ █▄   ▄▀ █  █  
+            ███            █  ███   ▀███▀     █   
+                          ▀                  ▀ \n"
+                          
+printf "                                                ${yellow}v1.0 
+                                                𝕓𝕪 𝕥𝕖𝕒𝕞 - ℍ.ℂ.𝕆\n\n" |pv -qL 30
+#printf "${red}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n
+#            ${nc}Today is `date`\n
+echo -e "${red}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
+}
+check_libs(){
+if [[ `command -v curl` && `command -v pv` ]]; then
+    sleep 2
+    msg "Packages already installed.\n"
+    sleep 2
+else
+        pkgs=(curl pv)
+        for pkg in "${pkgs[@]}"; do
+            type -p "$pkg" &>/dev/null || {
+                msg "Installing package : ${orange}$pkg${cyan1}${white}\n"
+                if [[ `command -v pkg` ]]; then
+                    pkg install "$pkg" -y
+                elif [[ `command -v apt` ]]; then
+                    apt install "$pkg" -y
+                elif [[ `command -v apt-get` ]]; then
+                    apt-get install "$pkg" -y
+                else
+                    errormsg "Unsupported package manager, Install manually.\n\n"
+                    { exit 1; }
+                fi
+            }
+        done
+fi
+}
+
+function LAST_STG() {
+    echo
+    read -p $'\e[32m[\e[0m+\e[32m] \e[0mEnter Amount of spams max.500 => ' rangein 
+    if [[ ! -z $rangein ]]; then
+        banner
+        msg "Bombing started on Phno.+${combnum}...\n"
+        rm -rf hcoapi
+        cp .apis hcoapi
+        while read a; do
+            echo ${a//€hcobomb/$phno}
+            echo ${a//+91/+$cncode}
+        done < hcoapi > hcoapi.t
+        mv hcoapi{.t,}
+        for i in {1..38}
+        do bash hcoapi
+    done
+    else
+        echo
+        errormsg "Wrong Input - try again"
+        sleep 4
+        LAST_STG
+    fi 
+
+}
+
+
+function MID(){
+    banner
+    read -p $'\e[32m[\e[0m+\e[32m] \e[0mPlease Enter victim,s Country code without "+" eg. 91 => ' cncode
+    if [[ ! -z $cncode ]]; then
+        echo
+        read -p $'\e[1;32m[\e[0m+\e[1;32m] \e[0mPlease Enter victim,s phone no. => +'${cncode} phno
+        if [[ ! -z $phno  ]]; then
+            combnum="${cncode}${phno}"
+            echo
+            read -p $'\e[1;34mDo You Want change phone no.:\e[0m +'${combnum}$'\e[1;31m (Y/N)\e[0m => ' askans
+            if [[ ! -z $askans ]];then
+                if [[ $askans == 'y' || $askans == 'Y' ]]; then
+                    MAIN
+                elif [[ $askans == 'N' || $askans == 'n' ]]; then
+                    LAST_STG
+                else
+                    echo 
+                    errormsg "Wrong Input - try again"
+                    sleep 4
+                    MID
+                fi
+
+            fi
+        else
+            echo 
+            errormsg "Wrong Input - try again"
+            sleep 4
+            MID
+        fi
+    else
+        echo 
+        errormsg "Wrong Input - try again"
+        sleep 4
+        MID
+    fi
+
+}
+function MAIN(){
+    if [[ ! -e .hco-msg ]]; then
+        firstbanner
+        check_libs
+        echo
+        msg "Initializing...\n\n" |pv -qL 30
+        sleep 4
+        errormsg "Please use this tool in limit of 500 spams ${green}(a msg from team - HCO)" |pv -qL 30
+        sleep 4
+        echo
+        echo "Initializing already done by tool!!" >> .hco-msg
+        MID
+    else
+        MID
+    fi
+}
+MAIN
