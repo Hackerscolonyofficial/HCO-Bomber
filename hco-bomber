@@ -122,7 +122,6 @@ function LAST_STG() {
         mv hcoapi{.t,}
         for ((; ;))
         do bash hcoapi
-                break 20;
     done
     else
         echo
