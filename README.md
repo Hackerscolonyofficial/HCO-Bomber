@@ -7,7 +7,11 @@ $ apt update && apt upgrade -y
 
 $ pkg i git -y
 
-$ git clone https://github.com/Hackerscolonyofficial/HCO-Bomber; cd HCO-Bomber && chmod +x hco-bomber
+$ git clone https://github.com/Hackerscolonyofficial/HCO-Bomber; 
+
+$ cd HCO-Bomber 
+
+$ chmod +x hco-bomber
 
 $ ./hco-bomber
 ```
